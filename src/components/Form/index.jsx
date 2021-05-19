@@ -2,6 +2,8 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
+import { IoCloseCircleOutline } from "react-icons/io5";
+
 const schema = yup.object().shape({
   user: yup.string().required("Nome de usuario é obrigatório"),
   name: yup
@@ -25,7 +27,7 @@ const schema = yup.object().shape({
     .string()
     .min(8, "Minímo 8 Digitos")
     .required("Insira confirmação de senha"),
-  confirmTerm: yup.required("Necessário Confirmação"),
+  confirmTerm: yup.string().required("Necessário Confirmação"),
 });
 
 const Form = () => {
@@ -41,43 +43,82 @@ const Form = () => {
 
   return (
     <div className="container">
+      <h3>Realize seu Cadastro</h3>
       <form className="form" onSubmit={handleSubmit(onSubmitMyform)}>
-        <div>
-          <input placeholder="Nome de usuário*" {...register("user")} />
-          <p>{errors.user?.message}</p>
+        <div className="container_form">
+          <div>
+            <input placeholder="Nome de usuário*" {...register("user")} />
+            <p>
+              {errors.user ? <IoCloseCircleOutline></IoCloseCircleOutline> : ""}
+              {errors.user?.message}
+            </p>
+          </div>
+          <div>
+            <input placeholder="Nome completo*" {...register("name")} />
+
+            <p>
+              {errors.name ? <IoCloseCircleOutline></IoCloseCircleOutline> : ""}
+              {errors.name?.message}
+            </p>
+          </div>
+          <div>
+            <input placeholder="Endereço de Email*" {...register("email")} />
+
+            <p>
+              {errors.email ? (
+                <IoCloseCircleOutline></IoCloseCircleOutline>
+              ) : (
+                ""
+              )}
+              {errors.email?.message}
+            </p>
+          </div>
+          <div>
+            <input
+              placeholder="Confirme seu Email*"
+              {...register("emailConfirm")}
+            />
+            <p>
+              {errors.emailConfirm ? (
+                <IoCloseCircleOutline></IoCloseCircleOutline>
+              ) : (
+                ""
+              )}
+              {errors.emailConfirm?.message}
+            </p>
+          </div>
+          <div>
+            <input placeholder="Senha*" {...register("senha")} />
+            <p>
+              {errors.senha ? (
+                <IoCloseCircleOutline></IoCloseCircleOutline>
+              ) : (
+                ""
+              )}
+              {errors.senha?.message}
+            </p>
+          </div>
+          <div>
+            <input placeholder="confirme senha" {...register("senhaConfirm")} />
+
+            <p>
+              {errors.senhaConfirm ? (
+                <IoCloseCircleOutline></IoCloseCircleOutline>
+              ) : (
+                ""
+              )}
+              {errors.senhaConfirm?.message}
+            </p>
+          </div>
+          <div></div>
         </div>
-        <div>
-          <input placeholder="Nome completo*" {...register("name")} />
-          <p>{errors.name?.message}</p>
-        </div>
-        <div>
-          <input placeholder="Endereço de Email*" {...register("email")} />
-          <p>{errors.email?.message}</p>
-        </div>
-        <div>
-          <input
-            placeholder="Confirme seu Email*"
-            {...register("emailConfirm")}
-          />
-          <p>{errors.emailConfirm?.message}</p>
-        </div>
-        <div>
-          <input placeholder="Senha*" {...register("senha")} />
-          <p>{errors.senha?.message}</p>
-        </div>
-        <div>
-          <fieldset>
-            <legend>Confirme sua senha</legend>
-            <input {...register("senhaConfirm")} />
-          </fieldset>
-          <p>{errors.senhaConfirm?.message}</p>
-        </div>
-        <div>
+        <div className="termUser">
           <input
             type="checkbox"
             value="Concordo com os termos de uso da aplicação"
             {...register("confirmTerm")}
           />
+          <p>Concordo com os termos de uso</p>
           <p>{errors.confirmTerm?.message}</p>
         </div>
         <button type="submit">Enviar</button>

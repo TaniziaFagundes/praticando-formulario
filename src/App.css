@@ -1,3 +1,41 @@
+.container h3 {
+  color: rgba(9, 255, 111, 0.979);
+}
+.container_form {
+  display: grid;
+  grid-template: auto / auto auto;
+}
+
+.container_form input {
+  padding: 15px;
+  margin: 15px;
+  font-size: 15px;
+}
+
+.container_form p {
+  color: red;
+  font-size: 14px;
+  margin-top: -5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.termUser {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button {
+  padding: 15px 60px;
+  border-radius: 10px;
+  border-style: none;
+  background-color: rgb(42, 122, 42);
+  color: white;
+  font-size: 18px;
+}
+
 .App {
   text-align: center;
 }
