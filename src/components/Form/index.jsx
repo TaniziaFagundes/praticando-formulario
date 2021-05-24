@@ -1,8 +1,11 @@
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useState } from "react";
 
 import { IoCloseCircleOutline } from "react-icons/io5";
+
+import Card from "../Card/";
 
 const schema = yup.object().shape({
   user: yup.string().required("Nome de usuario é obrigatório"),
@@ -38,8 +41,9 @@ const Form = () => {
   } = useForm({
     resolver: yupResolver(schema),
   });
+  const [data, setData] = useState("");
 
-  const onSubmitMyform = (data) => console.log("data");
+  const onSubmitMyform = (data) => setData(data);
 
   return (
     <div className="container">
@@ -123,6 +127,7 @@ const Form = () => {
         </div>
         <button type="submit">Enviar</button>
       </form>
+      {data !== "" ? <Card data={data}></Card> : ""}
     </div>
   );
 };

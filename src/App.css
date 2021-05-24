@@ -36,6 +36,23 @@ button {
   font-size: 18px;
 }
 
+button:hover {
+  background-color: rgba(58, 126, 58, 0.685);
+}
+
+.card {
+  background-color: #5377c0;
+  border-radius: 10px;
+  -webkit-box-shadow: 5px 5px 15px -1px #000000;
+  box-shadow: 5px 5px 15px -1px #000000;
+}
+
+.card h4 {
+  margin-top: 40px;
+  padding: 5px;
+  margin-bottom: 2px;
+}
+
 .App {
   text-align: center;
 }
